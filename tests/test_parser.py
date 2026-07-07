@@ -34,6 +34,16 @@ def test_parse_arcsec_synonym():
     assert parse_angle('1"') == math.radians(1 / 3600)
 
 
+def test_parse_mas():
+    assert parse_angle("1000 mas") == pytest.approx(math.radians(1 / 3600))
+    assert parse_angle("1 mas") == pytest.approx(math.radians(1 / 3600000))
+
+
+def test_parse_uas():
+    assert parse_angle("1e6 uas") == pytest.approx(math.radians(1 / 3600))
+    assert parse_angle("1 uas") == pytest.approx(math.radians(1 / 3600000000))
+
+
 def test_parse_radians():
     assert parse_angle("1 rad") == 1.0
     assert parse_angle("3.141592653589793 rad") == math.pi

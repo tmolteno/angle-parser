@@ -10,6 +10,8 @@ _SUFFIX_TO_RADIANS = {
     "'": math.pi / 10800,
     "arcsec": math.pi / 648000,
     '"': math.pi / 648000,
+    "mas": math.pi / 648000000,
+    "uas": math.pi / 648000000000,
     "rad": 1.0,
 }
 
@@ -17,7 +19,7 @@ _PATTERN = re.compile(
     r"^\s*"
     r"(?P<value>[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)"
     r"\s*"
-    r'(?P<suffix>deg|arcmin|\'|arcsec|"|rad)'
+    r'(?P<suffix>deg|arcmin|\'|arcsec|"|mas|uas|rad)'
     r"\s*$"
 )
 
@@ -25,7 +27,7 @@ _PATTERN = re.compile(
 def parse_angle(string: str) -> float:
     """Parse an angle string and return the value in radians.
 
-    Supported suffixes: deg, arcmin ('), arcsec ("), rad.
+    Supported suffixes: deg, arcmin ('), arcsec ("), mas, uas, rad.
 
     >>> parse_angle("90 deg")
     1.5707963267948966
