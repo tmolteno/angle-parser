@@ -19,9 +19,19 @@ def test_parse_arcmin():
     assert parse_angle("1 arcmin") == math.radians(1 / 60)
 
 
+def test_parse_arcmin_synonym():
+    assert parse_angle("60'") == math.radians(1)
+    assert parse_angle("1'") == math.radians(1 / 60)
+
+
 def test_parse_arcsec():
     assert parse_angle("3600 arcsec") == math.radians(1)
     assert parse_angle("1 arcsec") == math.radians(1 / 3600)
+
+
+def test_parse_arcsec_synonym():
+    assert parse_angle('3600"') == math.radians(1)
+    assert parse_angle('1"') == math.radians(1 / 3600)
 
 
 def test_parse_radians():
